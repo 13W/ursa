@@ -1,9 +1,4 @@
 {
-	'variables': {
-		# Default for this variable, to get the right behavior for
-		# Node versions <= 0.6.*.
-		'node_shared_openssl%': 'true'
-	},
 	'targets': [
 		{
 			'include_dirs': [ "<!(node -e \"require('nan')\")" ],
@@ -30,13 +25,9 @@
 					'<(openssl_root)/include',
 				  ],
 				}, { # OS!="win"
-				  'conditions': [
-					[ 'node_shared_openssl=="false"', {
-						'include_dirs': [
-							'<(node_root_dir)/deps/openssl/openssl/include'
-						]
-					}]
-					]
+                    'include_dirs': [
+                        '<(node_root_dir)/deps/openssl/openssl/include'
+                    ]
 				}],
 
 			]
